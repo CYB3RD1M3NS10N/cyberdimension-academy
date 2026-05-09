@@ -6,6 +6,7 @@
   <title>CYBERDIMENSION ACADEMY</title>
 
   <style>
+
     body{
       background:#0a0a0a;
       color:white;
@@ -27,6 +28,15 @@
       margin:auto;
     }
 
+    input{
+      width:250px;
+      padding:12px;
+      border-radius:10px;
+      border:none;
+      font-size:16px;
+      text-align:center;
+    }
+
     button{
       background:#8b5cf6;
       color:white;
@@ -40,7 +50,14 @@
     button:hover{
       opacity:0.8;
     }
+
+    #resultado{
+      margin-top:20px;
+      font-size:20px;
+    }
+
   </style>
+
 </head>
 
 <body>
@@ -55,11 +72,45 @@
 
     <br>
 
-    <button onclick="alert('Em breve: primeiro desafio!')">
-      COMEÇAR
+    <h2>DESAFIO #1</h2>
+
+    <p>
+      Descubra qual é a porta padrão do SSH.
+    </p>
+
+    <input id="flag" placeholder="Digite a resposta">
+
+    <br><br>
+
+    <button onclick="validar()">
+      ENVIAR
     </button>
 
+    <p id="resultado"></p>
+
   </div>
+
+  <script>
+
+    function validar(){
+
+      let flag = document.getElementById("flag").value;
+
+      if(flag === "22"){
+
+        document.getElementById("resultado").innerHTML =
+        "✅ Parabéns! Você concluiu o desafio.";
+
+      } else {
+
+        document.getElementById("resultado").innerHTML =
+        "❌ Resposta incorreta.";
+
+      }
+
+    }
+
+  </script>
 
 </body>
 </html>
