@@ -1,116 +1,257 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CYBERDIMENSION ACADEMY</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
+<title>CYBERDIMENSION ACADEMY</title>
 
-    body{
-      background:#0a0a0a;
-      color:white;
-      font-family:Arial;
-      text-align:center;
-      padding:50px;
-    }
+<style>
 
-    h1{
-      color:#8b5cf6;
-      font-size:50px;
-    }
+body{
+    background:#050505;
+    color:#00ff88;
+    font-family:monospace;
+    margin:0;
+    padding:0;
+}
 
-    .box{
-      background:#151515;
-      padding:30px;
-      border-radius:15px;
-      max-width:700px;
-      margin:auto;
-    }
+header{
+    background:#111;
+    padding:20px;
+    text-align:center;
+    border-bottom:2px solid #00ff88;
+}
 
-    input{
-      width:250px;
-      padding:12px;
-      border-radius:10px;
-      border:none;
-      font-size:16px;
-      text-align:center;
-    }
+h1{
+    margin:0;
+    color:#8b5cf6;
+    font-size:40px;
+}
 
-    button{
-      background:#8b5cf6;
-      color:white;
-      border:none;
-      padding:15px 30px;
-      border-radius:10px;
-      font-size:18px;
-      cursor:pointer;
-    }
+.container{
+    padding:30px;
+    max-width:1000px;
+    margin:auto;
+}
 
-    button:hover{
-      opacity:0.8;
-    }
+.missao{
+    background:#101010;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:15px;
+    border:1px solid #222;
+}
 
-    #resultado{
-      margin-top:20px;
-      font-size:20px;
-    }
+.missao h2{
+    color:#00ff88;
+}
 
-  </style>
+button{
+    background:#8b5cf6;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
 
+button:hover{
+    opacity:0.8;
+}
+
+#terminal{
+    background:black;
+    color:#00ff88;
+    padding:20px;
+    border-radius:15px;
+    min-height:300px;
+    margin-top:30px;
+    overflow:auto;
+}
+
+input{
+    width:100%;
+    background:black;
+    border:none;
+    color:#00ff88;
+    font-size:18px;
+    outline:none;
+    font-family:monospace;
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="box">
+<header>
 
-    <h1>CYBERDIMENSION ACADEMY</h1>
+<h1>CYBERDIMENSION ACADEMY</h1>
 
-    <p>
-      Aprenda cibersegurança na prática através de desafios reais.
-    </p>
+<p>
+Treinamento prático de cibersegurança
+</p>
 
-    <br>
+</header>
 
-    <h2>DESAFIO #1</h2>
+<div class="container">
 
-    <p>
-      Descubra qual é a porta padrão do SSH.
-    </p>
+<div class="missao">
+<h2>MISSÃO #1 — Reconhecimento</h2>
+<p>Descubra a porta padrão do SSH.</p>
+<button onclick="abrirMissao(1)">
+Iniciar Missão
+</button>
+</div>
 
-    <input id="flag" placeholder="Digite a resposta">
+<div class="missao">
+<h2>MISSÃO #2 — Linux</h2>
+<p>Descubra o comando que mostra o usuário atual.</p>
+<button onclick="abrirMissao(2)">
+Iniciar Missão
+</button>
+</div>
 
-    <br><br>
+<div class="missao">
+<h2>MISSÃO #3 — Web</h2>
+<p>Qual protocolo é usado para navegação segura?</p>
+<button onclick="abrirMissao(3)">
+Iniciar Missão
+</button>
+</div>
 
-    <button onclick="validar()">
-      ENVIAR
-    </button>
+<div class="missao">
+<h2>MISSÃO #4 — Redes</h2>
+<p>Qual comando testa conectividade?</p>
+<button onclick="abrirMissao(4)">
+Iniciar Missão
+</button>
+</div>
 
-    <p id="resultado"></p>
+<div class="missao">
+<h2>MISSÃO #5 — Pentest</h2>
+<p>Qual ferramenta é usada para varredura de portas?</p>
+<button onclick="abrirMissao(5)">
+Iniciar Missão
+</button>
+</div>
 
-  </div>
+<div class="missao">
+<h2>MISSÃO #6 — Logs</h2>
+<p>Qual arquivo guarda logs no Linux?</p>
+<button onclick="abrirMissao(6)">
+Iniciar Missão
+</button>
+</div>
 
-  <script>
+<div class="missao">
+<h2>MISSÃO #7 — HTTP</h2>
+<p>Qual código HTTP significa “não encontrado”?</p>
+<button onclick="abrirMissao(7)">
+Iniciar Missão
+</button>
+</div>
 
-    function validar(){
+<div class="missao">
+<h2>MISSÃO #8 — SQL Injection</h2>
+<p>Qual caractere é muito usado em SQL Injection?</p>
+<button onclick="abrirMissao(8)">
+Iniciar Missão
+</button>
+</div>
 
-      let flag = document.getElementById("flag").value;
+<div class="missao">
+<h2>MISSÃO #9 — Senhas</h2>
+<p>Qual técnica tenta milhares de senhas?</p>
+<button onclick="abrirMissao(9)">
+Iniciar Missão
+</button>
+</div>
 
-      if(flag === "22"){
+<div class="missao">
+<h2>MISSÃO #10 — Hacker Final</h2>
+<p>Digite a palavra secreta da CyberDimension.</p>
+<button onclick="abrirMissao(10)">
+Iniciar Missão
+</button>
+</div>
 
-        document.getElementById("resultado").innerHTML =
-        "✅ Parabéns! Você concluiu o desafio.";
+<div id="terminal">
 
-      } else {
+<p>root@cyberdimension:~$</p>
 
-        document.getElementById("resultado").innerHTML =
-        "❌ Resposta incorreta.";
+<input
+type="text"
+id="comando"
+placeholder="Digite sua resposta..."
+onkeydown="if(event.key==='Enter') validar()"
+>
 
-      }
+</div>
 
+</div>
+
+<script>
+
+let missaoAtual = 0;
+
+function abrirMissao(numero){
+
+    missaoAtual = numero;
+
+    document.getElementById("terminal").innerHTML = `
+    <p>Missão #${numero} iniciada.</p>
+    <p>Digite sua resposta:</p>
+
+    <input
+    type="text"
+    id="comando"
+    placeholder="Digite aqui..."
+    onkeydown="if(event.key==='Enter') validar()"
+    >
+    `;
+}
+
+function validar(){
+
+    let valor =
+    document.getElementById("comando")
+    .value
+    .toLowerCase();
+
+    let correto = "";
+
+    if(missaoAtual == 1) correto = "22";
+    if(missaoAtual == 2) correto = "whoami";
+    if(missaoAtual == 3) correto = "https";
+    if(missaoAtual == 4) correto = "ping";
+    if(missaoAtual == 5) correto = "nmap";
+    if(missaoAtual == 6) correto = "/var/log";
+    if(missaoAtual == 7) correto = "404";
+    if(missaoAtual == 8) correto = "'";
+    if(missaoAtual == 9) correto = "bruteforce";
+    if(missaoAtual == 10) correto = "cyberdimension";
+
+    if(valor == correto){
+
+        document.getElementById("terminal").innerHTML += `
+        <p>✅ MISSÃO CONCLUÍDA.</p>
+        <p>Parabéns hacker.</p>
+        `;
+
+    } else {
+
+        document.getElementById("terminal").innerHTML += `
+        <p>❌ Resposta incorreta.</p>
+        `;
     }
 
-  </script>
+}
+
+</script>
 
 </body>
 </html>
