@@ -10,7 +10,7 @@
 <style>
 
 body{
-    background:#0b0f19;
+    background:#09090b;
     color:#e5e7eb;
     font-family:monospace;
     margin:0;
@@ -18,20 +18,20 @@ body{
 }
 
 header{
-    background:#111827;
+    background:#18181b;
     padding:25px;
     text-align:center;
-    border-bottom:1px solid #1f2937;
+    border-bottom:1px solid #27272a;
 }
 
 h1{
     margin:0;
-    color:#60a5fa;
+    color:#7c3aed;
     font-size:42px;
 }
 
 header p{
-    color:#9ca3af;
+    color:#a1a1aa;
     margin-top:10px;
 }
 
@@ -42,30 +42,30 @@ header p{
 }
 
 .missao{
-    background:#111827;
+    background:#18181b;
     padding:25px;
     margin-bottom:20px;
     border-radius:18px;
-    border:1px solid #1f2937;
+    border:1px solid #27272a;
     transition:0.3s;
 }
 
 .missao:hover{
     transform:translateY(-3px);
-    border-color:#2563eb;
+    border-color:#7c3aed;
 }
 
 .missao h2{
-    color:#93c5fd;
+    color:#c4b5fd;
     margin-top:0;
 }
 
 .missao p{
-    color:#d1d5db;
+    color:#d4d4d8;
 }
 
 button{
-    background:#2563eb;
+    background:#6d28d9;
     color:white;
     border:none;
     padding:12px 24px;
@@ -81,19 +81,19 @@ button:hover{
 }
 
 #terminal{
-    background:#030712;
+    background:#020617;
     color:#e5e7eb;
     padding:25px;
     border-radius:18px;
     min-height:300px;
     margin-top:40px;
-    border:1px solid #1f2937;
+    border:1px solid #27272a;
     overflow:auto;
 }
 
 input{
     width:100%;
-    background:#030712;
+    background:#020617;
     border:none;
     color:#e5e7eb;
     font-size:18px;
@@ -108,6 +108,10 @@ input{
 
 .error{
     color:#ef4444;
+}
+
+.cmd{
+    color:#a78bfa;
 }
 
 </style>
@@ -216,7 +220,7 @@ root@cyberdimension:~$
 <input
 type="text"
 id="comando"
-placeholder="Digite sua resposta..."
+placeholder="Digite um comando..."
 onkeydown="if(event.key==='Enter') validar()"
 >
 
@@ -233,13 +237,18 @@ function abrirMissao(numero){
     missaoAtual = numero;
 
     document.getElementById("terminal").innerHTML = `
-    <p>Missão #${numero} iniciada.</p>
-    <p>Digite sua resposta:</p>
+    <p class="cmd">
+    root@cyberdimension:~$
+    </p>
+
+    <p>
+    Missão #${numero} iniciada.
+    </p>
 
     <input
     type="text"
     id="comando"
-    placeholder="Digite aqui..."
+    placeholder="Digite um comando..."
     onkeydown="if(event.key==='Enter') validar()"
     >
     `;
@@ -252,39 +261,125 @@ function validar(){
     .value
     .toLowerCase();
 
-    let correto = "";
+    let terminal =
+    document.getElementById("terminal");
 
-    if(missaoAtual == 1) correto = "22";
-    if(missaoAtual == 2) correto = "whoami";
-    if(missaoAtual == 3) correto = "https";
-    if(missaoAtual == 4) correto = "ping";
-    if(missaoAtual == 5) correto = "nmap";
-    if(missaoAtual == 6) correto = "/var/log";
-    if(missaoAtual == 7) correto = "404";
-    if(missaoAtual == 8) correto = "'";
-    if(missaoAtual == 9) correto = "bruteforce";
-    if(missaoAtual == 10) correto = "cyberdimension";
+    terminal.innerHTML += `
+    <p class="cmd">
+    > ${valor}
+    </p>
+    `;
 
-    if(valor == correto){
+    if(valor == "help"){
 
-        document.getElementById("terminal").innerHTML += `
-        <p class="success">
-        ✅ MISSÃO CONCLUÍDA.
-        </p>
-
+        terminal.innerHTML += `
         <p>
-        Parabéns hacker.
-        </p>
-        `;
+        Comandos disponíveis:
+        <br><br>
 
-    } else {
-
-        document.getElementById("terminal").innerHTML += `
-        <p class="error">
-        ❌ Resposta incorreta.
+        nmap
+        <br>
+        whoami
+        <br>
+        ls
+        <br>
+        clear
         </p>
         `;
     }
+
+    else if(valor == "nmap"){
+
+        terminal.innerHTML += `
+        <p>
+        Starting Nmap...
+        <br><br>
+
+        22/tcp open ssh
+        <br>
+        80/tcp open http
+        <br>
+        443/tcp open https
+        </p>
+        `;
+    }
+
+    else if(valor == "whoami"){
+
+        terminal.innerHTML += `
+        <p>
+        root
+        </p>
+        `;
+    }
+
+    else if(valor == "ls"){
+
+        terminal.innerHTML += `
+        <p>
+        secrets.txt
+        <br>
+        logs/
+        <br>
+        backup.zip
+        </p>
+        `;
+    }
+
+    else if(valor == "clear"){
+
+        terminal.innerHTML = "";
+    }
+
+    else {
+
+        let correto = "";
+
+        if(missaoAtual == 1) correto = "22";
+        if(missaoAtual == 2) correto = "whoami";
+        if(missaoAtual == 3) correto = "https";
+        if(missaoAtual == 4) correto = "ping";
+        if(missaoAtual == 5) correto = "nmap";
+        if(missaoAtual == 6) correto = "/var/log";
+        if(missaoAtual == 7) correto = "404";
+        if(missaoAtual == 8) correto = "'";
+        if(missaoAtual == 9) correto = "bruteforce";
+        if(missaoAtual == 10) correto = "cyberdimension";
+
+        if(valor == correto){
+
+            terminal.innerHTML += `
+            <p class="success">
+            ✅ MISSÃO CONCLUÍDA.
+            </p>
+
+            <p>
+            Excelente trabalho hacker.
+            </p>
+            `;
+        }
+
+        else {
+
+            terminal.innerHTML += `
+            <p class="error">
+            ❌ Comando ou resposta inválida.
+            </p>
+            `;
+        }
+    }
+
+    terminal.innerHTML += `
+
+    <input
+    type="text"
+    id="comando"
+    placeholder="Digite um comando..."
+    onkeydown="if(event.key==='Enter') validar()"
+    >
+    `;
+
+    document.getElementById("comando").focus();
 
 }
 
